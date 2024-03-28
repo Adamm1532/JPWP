@@ -1,8 +1,8 @@
 import time
-import customtkinter as ctk
-import PIL as pil
 from threading import Thread
-
+import PIL as pil
+import customtkinter as ctk
+import Globalne as glb
 
 
 class Bank_Login(ctk.CTk):
@@ -10,16 +10,11 @@ class Bank_Login(ctk.CTk):
         super().__init__()
         self.title("Bank Login")
         self.geometry("420x740+700+20")
-        self.color_yellow = "#E6D525"
-        self.color_magenta = "#E62569"
-        self.color_blue = "#25C0E6"
-        self.color_backgroundLight = "#f4edde"
-        self.color_backgroundDark = "#565656"
 
         self.Frame_x=0
         self.backgroundFrame = ctk.CTkFrame(self,
-                                            fg_color=self.color_backgroundLight,
-                                            border_color=self.color_backgroundLight,
+                                            fg_color=glb.color_background,
+                                            border_color=glb.color_background,
                                             width=420, height=740)
         self.backgroundFrame.place(relx=self.Frame_x, rely=0, anchor="nw")
 
@@ -42,7 +37,7 @@ class Bank_Login(ctk.CTk):
 
         self.Bank_Logo = ctk.CTkLabel(self.backgroundFrame,
                                  height=110, width=110,
-                                 fg_color=self.color_magenta,
+                                 fg_color=glb.color_magenta,
                                  text="Py",
                                  font=("Arial Rounded MT Bold", 60),
                                  text_color="white",
@@ -60,7 +55,7 @@ class Bank_Login(ctk.CTk):
         self.Mail_Text = ctk.CTkLabel(self.backgroundFrame,
                                      text="Podaj swól e-mail:",
                                      font=("Arial", 20),
-                                     text_color=self.color_magenta)
+                                     text_color=glb.color_magenta)
         self.Mail_Text.place(relx=self.Bank_x+0.05, rely=0.48, anchor="se")
 
         self.Entry_Mail = ctk.CTkEntry(self.backgroundFrame,
@@ -74,7 +69,7 @@ class Bank_Login(ctk.CTk):
         self.Password_Text = ctk.CTkLabel(self.backgroundFrame,
                                       text="Wpisze swoje hasło:",
                                       font=("Arial", 20),
-                                      text_color=self.color_magenta)
+                                      text_color=glb.color_magenta)
         self.Password_Text.place(relx=self.Bank_x+0.1, rely=0.58, anchor="se")
 
         self.Entry_Password = ctk.CTkEntry(self.backgroundFrame,
@@ -88,8 +83,8 @@ class Bank_Login(ctk.CTk):
 
         self.Button_Login = ctk.CTkButton(self.backgroundFrame,
                                         text="Zaloguj",
-                                        fg_color=self.color_magenta,
-                                        hover_color=self.color_blue,
+                                        fg_color=glb.color_magenta,
+                                        hover_color=glb.color_blue,
                                         width=120, height=50,
                                         corner_radius=10,
                                         command=self.clicked)
@@ -157,7 +152,7 @@ class Bank_Login(ctk.CTk):
             self.after(25, self.blue_move)
 
     def moveEverythingElse(self):
-        if self.Bank_x<4:
+        if self.Bank_x<1.5:
             self.Bank_x += 0.05
             self.Bank_Logo.place(relx=self.Bank_x, rely=0.3, anchor="e")
             self.Bank_Text.place(relx=self.Bank_x, rely=0.3, anchor="w")
@@ -172,11 +167,7 @@ class Bank_Login(ctk.CTk):
         # self.after(20, self.moveEverythingElse)
 
     def destruction(self):
-        self.after(2000, self.destroy)
-        time.sleep(2)
-        import Bank_Ustawienia
+        self.after(2500, self.destroy)
 
-
-if __name__ == "__main__":
-    app = Bank_Login()
-    app.mainloop()
+Bank_Login().mainloop()
+import Bank_Ustawienia
