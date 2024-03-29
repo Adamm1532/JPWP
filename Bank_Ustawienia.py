@@ -207,4 +207,4 @@ class Ustawienia(ctk.CTk):
             self.DarkMode_Label.configure(text_color=glb.color_text)
 
 Ustawienia().mainloop()
-import Bank_Login
+import Glowna
