@@ -86,8 +86,8 @@ class Bank_Login(ctk.CTkFrame):
         self.Button_Login.place(relx=self.Bank_x, rely=0.7, anchor="center")
 
     def clicked(self):
-        correct_mail = ["adam@madon.pl", "dorian@sraga.pl", "1"]
-        correct_password = ["12345", "dorian", "1"]
+        correct_mail = ["adam@madon.pl", "1"]
+        correct_password = ["12345", "1"]
         if self.Entry_Mail.get() in correct_mail and self.Entry_Password.get() in correct_password:
             print("Debug: Zalogowano")
             Thread(target=self.magenta_expand()).start()
@@ -164,3 +164,31 @@ class Bank_Login(ctk.CTkFrame):
     def change(self):
         time.sleep(2)
         self.controller.show_frame("Glowna")
+        time.sleep(0.1)
+        self.magenta_size = 150
+        self.Magenta_Circle_img = ctk.CTkImage(dark_image=pil.Image.open("Circle_magenta.png"),
+                                               size=(self.magenta_size, self.magenta_size))
+        self.Magenta_Cirlce_Label = ctk.CTkLabel(self.backgroundFrame, image=self.Magenta_Circle_img, text="")
+        self.Magenta_Cirlce_Label.place(x=30, y=50, anchor="center")
+        self.yellow_x = 350
+        self.Yellow_Cirlce_Label.place(x=self.yellow_x, y=200, anchor="nw")
+        self.blue_y = 700
+        self.Blue_Cirlce_Label.place(x=300, y=self.blue_y, anchor="center")
+        self.Bank_x = 0.5
+        self.Bank_Logo.place(relx=self.Bank_x, rely=0.3, anchor="e")
+        self.Bank_Text.place(relx=self.Bank_x, rely=0.3, anchor="w")
+        self.Mail_Text.place(relx=self.Bank_x+0.05, rely=0.48, anchor="se")
+        self.Entry_Mail.place(relx=self.Bank_x, rely=0.5, anchor="center")
+        self.Password_Text.place(relx=self.Bank_x+0.1, rely=0.58, anchor="se")
+        self.Entry_Password.place(relx=self.Bank_x, rely=0.6, anchor="center")
+        self.Button_Login.place(relx=self.Bank_x, rely=0.7, anchor="center")
+        self.Entry_Mail.delete(0, "end")
+        self.Entry_Password.delete(0, "end")
+
+    def change_mode_dark(self):
+        self.backgroundFrame.configure(fg_color=glb.color_background)
+        self.Bank_Text.configure(text_color=glb.color_text)
+
+    def change_mode_light(self):
+        self.backgroundFrame.configure(fg_color=glb.color_background2)
+        self.Bank_Text.configure(text_color=glb.color_text)

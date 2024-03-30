@@ -151,6 +151,15 @@ class Ustawienia(ctk.CTkFrame):
                                             text="")
         self.DarkMode_Switch.place(relx=0.84, rely=0.77, anchor="center")
 
+        self.LogOut_Button = ctk.CTkButton(self.background_frame,
+                                         text="Wyloguj",
+                                         fg_color=glb.color_magenta,
+                                         hover_color=glb.color_blue,
+                                         width=80, height=30,
+                                         corner_radius=10,
+                                         command=self.Back_Login)
+        self.LogOut_Button.place(relx=0.5, rely=0.9, anchor="center")
+
     def update_liczba_przelewy(self, value):
         value = round(value, 2)
         self.Limity_przelewy_liczba.configure(text=value)
@@ -164,11 +173,15 @@ class Ustawienia(ctk.CTkFrame):
     def Back(self):
         self.controller.show_frame("Glowna")
 
+    def Back_Login(self):
+        self.controller.show_frame("Bank_Login")
+
 
     def change_mode(self):
         if self.DarkMode_Switch.get() == 1:
             glb.color_text = "white"
             glb.color_background = "#414141"
+            glb.color_background2 = "#023534"
             glb.back_button = pil.Image.open("back_darkmode.png")
             self.background_frame.configure(fg_color=glb.color_background,
                                             border_color=glb.color_background)
@@ -185,9 +198,11 @@ class Ustawienia(ctk.CTkFrame):
             self.Warning_Label.configure(text_color=glb.color_text)
             self.DarkMode_Label.configure(text_color=glb.color_text)
             self.controller.change_mode_dark("Glowna")
+            self.controller.change_mode_dark("Bank_Login")
         else:
             glb.color_text = "black"
             glb.color_background = "#F4EDDE"
+            glb.color_background2 = "#e5d4b1"
             glb.back_button = pil.Image.open("back.png")
             self.background_frame.configure(fg_color=glb.color_background,
                                             border_color=glb.color_background)
@@ -203,4 +218,5 @@ class Ustawienia(ctk.CTkFrame):
             self.Notification_Label.configure(text_color=glb.color_text)
             self.Warning_Label.configure(text_color=glb.color_text)
             self.DarkMode_Label.configure(text_color=glb.color_text)
-            gl.Glowna.change_mode_light()
+            self.controller.change_mode_light("Glowna")
+            self.controller.change_mode_light("Bank_Login")

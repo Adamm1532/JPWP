@@ -32,6 +32,9 @@ class Launch(ctk.CTk):
     def change_mode_dark(self, page_name):
         self.frames[page_name].change_mode_dark()
 
+    def change_mode_light(self, page_name):
+        self.frames[page_name].change_mode_light()
+
 
 if __name__ == "__main__":
     app = Launch()
