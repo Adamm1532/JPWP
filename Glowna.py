@@ -37,7 +37,8 @@ class Glowna(ctk.CTk):
                                          corner_radius=10,
                                          text="Stan Konta: " + str(glb.Saldo) + " zł",
                                          font=("Arial", 20, "bold"),
-                                         text_color=glb.color_text, fg_color=glb.color_background)
+                                         text_color=glb.color_text, 
+                                         fg_color=glb.color_background)
         self.Saldo_Label.place(relx=0.5, rely=0.22, anchor="center")
 
 
