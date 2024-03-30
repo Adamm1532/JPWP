@@ -5,7 +5,7 @@ from PIL import Image, ImageTk
 import customtkinter as ctk
 import Globalne as glb
 from datetime import datetime
-
+import os
 
 class Profil(ctk.CTk):
     def __init__(self):
@@ -23,7 +23,7 @@ class Profil(ctk.CTk):
         
 
         # Wywołanie funkcji
-        self.profile_img = ctk.CTkImage(dark_image=pil.Image.open("profile.png"), size=(200, 200))
+        self.profile_img = ctk.CTkImage(dark_image=pil.Image.open("uzytkownik.png"), size=(200, 200))
         self.Profile_Button = ctk.CTkButton(self.background_frame, image=self.profile_img, text="",
                                          width=50, height=50,
                                          fg_color=glb.color_background,
@@ -40,11 +40,19 @@ class Profil(ctk.CTk):
         # Użytkownik wybiera plik obrazu
         f_types = [('All files', '*.*'), ('JPG', '*.jpg'), ('PNG', '*.png')]
         filename = ctk.filedialog.askopenfilename(filetypes=f_types)
-
+        image_pil = Image.open(filename)
         # Otwórz wybrany plik obrazu i przypisz go do zmiennej profile_img
         self.profile_img = ctk.CTkImage(dark_image=Image.open(filename), size=(200, 200))
-
+        
         # Zaktualizuj obrazek przycisku
         self.Profile_Button.configure(image=self.profile_img)
+
+
+        output_filename = "uzytkownik.png"
+        #image_pil = self.profile_img._light_image # Pobierz obraz PIL z obiektu CTkImage
+        image_pil.save(output_filename, overwrite=True)  # Zapisz obraz PIL
+
+
+
 
 Profil().mainloop()        
