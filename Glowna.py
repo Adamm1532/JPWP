@@ -5,23 +5,7 @@ import customtkinter as ctk
 import Globalne as glb
 from datetime import datetime
 #import Bank_Ustawienia as Ust
-class Historia(ctk.CTkScrollableFrame):
-    def __init__(self, master, **kwargs):
-        super().__init__(master, **kwargs)
 
-        
-        label = ctk.CTkLabel(self, text= glb.historia1[0])
-        label.grid(row=0, column=0, padx=(10, 5), pady=10, sticky=ctk.W)
-        label2 = ctk.CTkLabel(self, text= glb.historia1[1])
-        label2.grid(row=0, column=1, padx=(10, 5), pady=10, sticky=ctk.W)
-        self.arrow1_img = ctk.CTkImage(dark_image=glb.arrow1, size=(30, 30))
-        self.arrow1_Button = ctk.CTkButton(self, image=self.arrow1_img, text="",
-                                         width=20, height=20,
-                                         fg_color="transparent",
-                                         
-                                         #command=self.destruction,
-                                         hover_color=glb.color_background)
-        self.arrow1_Button.grid(row=0, column=2, padx=(10, 5), pady=10, sticky=ctk.W)
 
 
 
@@ -37,20 +21,15 @@ class Glowna(ctk.CTk):
         self.color_blue = "#25C0E6"
         self.color_backgroundLight = "#f4edde"
         self.color_backgroundDark = "#565656"
+        self.Settings_size = 30
+        self.Settings_y = 0.05
+        self.Settings_x = 0.9
         self.background_frame = ctk.CTkFrame(self,
                                              fg_color=glb.color_background,
                                              border_color=glb.color_background,
                                              width=420, height=740)
         self.background_frame.place(relx=0, rely=0, anchor="nw")
 
-        self.Settings_img = ctk.CTkImage(dark_image=glb.settings_button, size=(30, 30))
-        self.Settings_Button = ctk.CTkButton(self.background_frame, image=self.Settings_img, text="",
-                                         width=50, height=500,
-                                         fg_color=glb.color_background,
-                                         
-                                         command=self.destruction,
-                                         hover_color=glb.color_background)
-        self.Settings_Button.place(relx=0.9, rely=0.05, anchor="center")
 
 
         self.Saldo_Label = ctk.CTkLabel(self.background_frame,
@@ -67,14 +46,15 @@ class Glowna(ctk.CTk):
         self.historia_scrol=ctk.CTkScrollableFrame(master=self, 
                                                    bg_color=glb.color_background,
                                                    border_color=glb.color_magenta,
-                                                   border_width=0,width=300,
-                                                   height=200,
+                                                   border_width=0,
+                                                   width=300,
+                                                   height=400,
                                                    fg_color= glb.color_background2,
                                                    label_text="Historia tranzakcji",
                                                    label_fg_color=glb.color_yellow,
                                                    scrollbar_button_color=glb.color_magenta,
                                                    corner_radius=10,)
-        self.historia_scrol.place(relx=0.5, rely=0.7, anchor="center")
+        self.historia_scrol.place(relx=0.5, rely=0.6, anchor="center")
 
 
         self.buttons = []  # List to store button instances
@@ -83,7 +63,7 @@ class Glowna(ctk.CTk):
         current_datetime = datetime.now()
 
 
-        current_date_time = current_datetime.strftime("%m/%d/%Y, %H:%M:%S")
+        current_date_time = current_datetime.strftime("%H:%M:%S  %m/%d/%Y")
         
 
 
@@ -94,7 +74,7 @@ class Glowna(ctk.CTk):
             label.grid(row=x, column=1, padx=(10, 81), pady=10, sticky=ctk.W,)
 
 
-            label2 = ctk.CTkLabel(self.historia_scrol, text= glb.historia1[x+1],fg_color=glb.color_background2)
+            label2 = ctk.CTkLabel(self.historia_scrol, text=str(glb.historia1[x+1]) + " zł", fg_color=glb.color_background2)
             label2.grid(row=x, column=2, padx=(10, 5), pady=10, sticky=ctk.W)
             self.arrow1_img = ctk.CTkImage(dark_image=glb.arrow1, size=(30, 30))
             self.arrow2_img = ctk.CTkImage(dark_image=glb.arrow2, size=(30, 30))
@@ -109,22 +89,24 @@ class Glowna(ctk.CTk):
             label_czas = ctk.CTkLabel(self.historia_scrol, text= current_date_time, fg_color=glb.color_background2,text_color=glb.color_background2,width=0, height=0)
             #label_czas.grid(row=x+1, column=1, padx=(10, 5), pady=10, sticky=ctk.W,)
             self.labels.append(label_czas)
-            
-    #def is_grid_cell_empty(self,frame, row, column):
-    # Get grid information of the frame
-        #grid_info = frame.grid_info()
 
-         #   # Check if the given row and column exists in the grid
-        #if f'row{row}' not in grid_info or f'column{column}' not in grid_info:
-         #       return True  # Cell is empty
-       # else:
-                # Check if there are any widgets in the given row and column
-       #     widgets = frame.grid_slaves(row=row, column=column)
-       #     print ("Debug", len(widgets) )
-       #     if len(widgets) == 0 : # If no widgets, cell is empty
-       #         return True
-       #     else:
-       #         return False
+
+        self.Settings_img = ctk.CTkImage(dark_image=glb.settings_button, size=(self.Settings_size, self.Settings_size))
+        self.Settings_Button = ctk.CTkButton(self.background_frame, image=self.Settings_img, text="",
+                                         width=50, height=50,
+                                         fg_color=glb.color_background,
+                                         
+                                         command=self.zwieksz_settings,
+                                         hover_color=glb.color_background)
+        self.Settings_Button.place(relx=self.Settings_x, rely=self.Settings_y, anchor="center")   
+        self.Profile_img = ctk.CTkImage(dark_image=glb.Profile_button, size=(30, 30))
+        self.Profile_Button = ctk.CTkButton(self.background_frame, image=self.Profile_img, text="",
+                                         width=50, height=50,
+                                         fg_color=glb.color_background,
+                                         
+                                         #command=self.zwieksz_profile,
+                                         hover_color=glb.color_background)
+        self.Profile_Button.place(relx=0.1, rely=self.Settings_y, anchor="center") 
 
     def expand(self,x):
         
@@ -136,7 +118,7 @@ class Glowna(ctk.CTk):
             label.grid_remove()
 
     # Change the image in the clicked button
-        print("Debug: " ,self.ostatni_click)    
+          
         if self.ostatni_click != x:
         
             self.buttons[x//2].configure(image=self.arrow2_img)
@@ -146,7 +128,23 @@ class Glowna(ctk.CTk):
         else:
             self.ostatni_click = "nic"
 
+    def zwieksz_settings(self):
+    #    while self.Settings_y != 0.5 and self.Settings_x != 0.5:
+    #        self.Settings_y += 0.05
+    #        self.Settings_x -= 0.05
+    #        self.Settings_Button.place(relx=self.Settings_x,rely=self.Settings_y)
+    #        time.sleep(0.1) 
 
+        while self.Settings_size <= 2000:
+            self.Settings_size *= 1.1
+            
+            self.Settings_img = ctk.CTkImage(dark_image=glb.settings_button, size=(self.Settings_size, self.Settings_size))
+            self.Settings_Button.configure(image=self.Settings_img)
+            self.update_idletasks()  # Aktualizuj interfejs użytkownika
+            time.sleep(0.001) 
+   
+
+                
 
     def destruction(self):
         self.destroy()
