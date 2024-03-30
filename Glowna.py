@@ -58,7 +58,10 @@ class Glowna(ctk.CTk):
 
 
         self.buttons = []  # List to store button instances
-        self.labels = []   # List to store label instances
+        self.labels = []
+        
+        self.rodzaj = []  # List to store button instances
+        self.ilosc = []   # List to store label instances
         # getting the current date and time
         current_datetime = datetime.now()
 
@@ -72,10 +75,12 @@ class Glowna(ctk.CTk):
             
             label = ctk.CTkLabel(self.historia_scrol, text= glb.historia1[x], fg_color=glb.color_background2)
             label.grid(row=x, column=1, padx=(10, 81), pady=10, sticky=ctk.W,)
-
+            self.rodzaj.append(label)
 
             label2 = ctk.CTkLabel(self.historia_scrol, text=str(glb.historia1[x+1]) + " zł", fg_color=glb.color_background2)
             label2.grid(row=x, column=2, padx=(10, 5), pady=10, sticky=ctk.W)
+            self.ilosc.append(label2)
+
             self.arrow1_img = ctk.CTkImage(dark_image=glb.arrow1, size=(30, 30))
             self.arrow2_img = ctk.CTkImage(dark_image=glb.arrow2, size=(30, 30))
             arrow_button = ctk.CTkButton(self.historia_scrol, image=self.arrow1_img, text="",
