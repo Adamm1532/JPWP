@@ -4,19 +4,16 @@ import PIL as pil
 import customtkinter as ctk
 import Globalne as glb
 
+class Bank_Login(ctk.CTkFrame):
+    def __init__(self, parent, controller):
+        ctk.CTkFrame.__init__(self, parent)
+        self.controller = controller
 
-class Bank_Login(ctk.CTk):
-    def __init__(self):
-        super().__init__()
-        self.title("Bank Login")
-        self.geometry("420x740+700+20")
-
-        self.Frame_x=0
         self.backgroundFrame = ctk.CTkFrame(self,
                                             fg_color=glb.color_background,
                                             border_color=glb.color_background,
                                             width=420, height=740)
-        self.backgroundFrame.place(relx=self.Frame_x, rely=0, anchor="nw")
+        self.backgroundFrame.place(relx=0, rely=0, anchor="nw")
 
         self.magenta_size = 150
         self.Magenta_Circle_img = ctk.CTkImage(dark_image=pil.Image.open("Circle_magenta.png"), size=(self.magenta_size, self.magenta_size))
@@ -24,16 +21,14 @@ class Bank_Login(ctk.CTk):
         self.Magenta_Cirlce_Label.place(x=30, y=50, anchor="center")
 
         self.yellow_x = 350
-        self.yellow_y = 200
         self.Yellow_Circle_img = ctk.CTkImage(dark_image=pil.Image.open("Circle_yellow.png"), size=(200, 200))
         self.Yellow_Cirlce_Label = ctk.CTkLabel(self.backgroundFrame, image=self.Yellow_Circle_img, text="")
-        self.Yellow_Cirlce_Label.place(x=self.yellow_x, y=self.yellow_y, anchor="nw")
+        self.Yellow_Cirlce_Label.place(x=self.yellow_x, y=200, anchor="nw")
 
-        self.blue_x = 300
         self.blue_y = 700
         self.Blue_Circle_img = ctk.CTkImage(dark_image=pil.Image.open("Circle_blue.png"), size=(300, 300))
         self.Blue_Cirlce_Label = ctk.CTkLabel(self.backgroundFrame, image=self.Blue_Circle_img, text="")
-        self.Blue_Cirlce_Label.place(x=self.blue_x, y=self.blue_y, anchor="center")
+        self.Blue_Cirlce_Label.place(x=300, y=self.blue_y, anchor="center")
 
         self.Bank_Logo = ctk.CTkLabel(self.backgroundFrame,
                                  height=110, width=110,
@@ -99,7 +94,7 @@ class Bank_Login(ctk.CTk):
             Thread(target=self.yellow_move()).start()
             Thread(target=self.blue_move()).start()
             Thread(target=self.moveEverythingElse).start()
-            Thread(target=self.destruction).start()
+            Thread(target=self.change).start()
         else:
             print("Debug: Błędne dane")
             self.Wrong_Label()
@@ -142,13 +137,13 @@ class Bank_Login(ctk.CTk):
     def yellow_move(self):
         if self.yellow_x <= 450:
             self.yellow_x += 5
-            self.Yellow_Cirlce_Label.place(x=self.yellow_x, y=self.yellow_y, anchor="nw")
+            self.Yellow_Cirlce_Label.place(x=self.yellow_x, y=200, anchor="nw")
             self.after(25, self.yellow_move)
 
     def blue_move(self):
-        if self.blue_y <= 1000:
+        if self.blue_y <= 900:
             self.blue_y += 10
-            self.Blue_Cirlce_Label.place(x=self.blue_x, y=self.blue_y, anchor="center")
+            self.Blue_Cirlce_Label.place(x=300, y=self.blue_y, anchor="center")
             self.after(25, self.blue_move)
 
     def moveEverythingElse(self):
@@ -166,8 +161,6 @@ class Bank_Login(ctk.CTk):
         # self.backgroundFrame.place(relx=self.Frame_x, rely=0, anchor="nw")
         # self.after(20, self.moveEverythingElse)
 
-    def destruction(self):
-        self.after(2500, self.destroy)
-
-Bank_Login().mainloop()
-import Bank_Ustawienia
+    def change(self):
+        time.sleep(2)
+        self.controller.show_frame("Glowna")

@@ -1,17 +1,13 @@
 import customtkinter as ctk
 import Globalne as glb
 import PIL as pil
+import Glowna as gl
 
-class Ustawienia(ctk.CTk):
-    def __init__(self):
-        super().__init__()
-        self.title("Ustawienia")
-        self.geometry("420x740+700+20")
-        self.color_yellow = "#E6D525"
-        self.color_magenta = "#E62569"
-        self.color_blue = "#25C0E6"
-        self.color_backgroundLight = "#f4edde"
-        self.color_backgroundDark = "#565656"
+class Ustawienia(ctk.CTkFrame):
+    def __init__(self, parent, controller):
+        ctk.CTkFrame.__init__(self, parent)
+        self.controller = controller
+
         self.background_frame = ctk.CTkFrame(self,
                                              fg_color=glb.color_background,
                                              border_color=glb.color_background,
@@ -166,7 +162,8 @@ class Ustawienia(ctk.CTk):
         glb.karty_liczba = value
 
     def Back(self):
-        self.destroy()
+        self.controller.show_frame("Glowna")
+
 
     def change_mode(self):
         if self.DarkMode_Switch.get() == 1:
@@ -187,6 +184,7 @@ class Ustawienia(ctk.CTk):
             self.Notification_Label.configure(text_color=glb.color_text)
             self.Warning_Label.configure(text_color=glb.color_text)
             self.DarkMode_Label.configure(text_color=glb.color_text)
+            self.controller.change_mode_dark("Glowna")
         else:
             glb.color_text = "black"
             glb.color_background = "#F4EDDE"
@@ -205,6 +203,4 @@ class Ustawienia(ctk.CTk):
             self.Notification_Label.configure(text_color=glb.color_text)
             self.Warning_Label.configure(text_color=glb.color_text)
             self.DarkMode_Label.configure(text_color=glb.color_text)
-
-Ustawienia().mainloop()
-import Bank_Login
+            gl.Glowna.change_mode_light()
