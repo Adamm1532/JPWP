@@ -15,3 +15,5 @@ przelew_liczba = 500
 karta_liczba = 500
 Saldo = 732.32
 historia1 = ["art. spożywcze", 25.02,"art. spożywcze", 25.02,"art. spożywcze", 25.02,"art. spożywcze", 25.02,"art. spożywcze", 25.02,"art. spożywcze", 25.02,"art. spożywcze", 25.02,"art. spożywcze", 25.02,"art. spożywcze", 25.02,"art. spożywcze", 25.02]
+Dane = ["Sraga","Dorian","123456789","ul.polna 2"]
+
