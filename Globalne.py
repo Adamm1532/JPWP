@@ -1,0 +1,19 @@
+import PIL as pil
+
+back_button = pil.Image.open("back.png")
+settings_button = pil.Image.open("settings.png")
+arrow1 = pil.Image.open("arrow1.png")
+arrow2 = pil.Image.open("arrow2.png")
+Profile_button = pil.Image.open("profile.png")
+Pen = pil.Image.open("Pen.png")
+color_yellow = "#E6D525"
+color_magenta = "#E62569"
+color_blue = "#25C0E6"
+color_background = "#F4EDDE" #zmienia sie na #034d4c
+color_background2 = "#e5d4b1" #zmienia sie na #023534
+color_text = "black" #zmienia sie na white
+przelew_liczba = 500
+karta_liczba = 500
+Saldo = 732.32
+historia1 = ["art. spożywcze", 25.02,"art. spożywcze", 25.02,"art. spożywcze", 25.02,"art. spożywcze", 25.02]
+Dane = ["Sraga","Dorian","123456789","ul.polna 2"]
