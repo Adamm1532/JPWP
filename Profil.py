@@ -143,7 +143,8 @@ class Profil(ctk.CTk):
                 # Enable all change buttons
                 for btn in self.change_buttons:
                     btn.configure(state="normal")
-
+                # Disable the confirm button
+            confirm_button.grid_remove()
         # Function to handle Enter key press
         def handle_enter(event):
             update_label()
