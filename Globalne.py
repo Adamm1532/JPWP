@@ -5,6 +5,7 @@ settings_button = pil.Image.open("settings.png")
 arrow1 = pil.Image.open("arrow1.png")
 arrow2 = pil.Image.open("arrow2.png")
 Profile_button = pil.Image.open("profile.png")
+Pen = pil.Image.open("Pen.png")
 color_yellow = "#E6D525"
 color_magenta = "#E62569"
 color_blue = "#25C0E6"
