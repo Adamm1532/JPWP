@@ -199,6 +199,7 @@ class Ustawienia(ctk.CTkFrame):
             self.DarkMode_Label.configure(text_color=glb.color_text)
             self.controller.change_mode_dark("Glowna")
             self.controller.change_mode_dark("Bank_Login")
+            self.controller.change_mode_dark("Profil")
         else:
             glb.color_text = "black"
             glb.color_background = "#F4EDDE"
@@ -220,3 +221,4 @@ class Ustawienia(ctk.CTkFrame):
             self.DarkMode_Label.configure(text_color=glb.color_text)
             self.controller.change_mode_light("Glowna")
             self.controller.change_mode_light("Bank_Login")
+            self.controller.change_mode_light("Profil")

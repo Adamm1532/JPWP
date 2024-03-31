@@ -86,7 +86,7 @@ class Bank_Login(ctk.CTkFrame):
         self.Button_Login.place(relx=self.Bank_x, rely=0.7, anchor="center")
 
     def clicked(self):
-        correct_mail = ["adam@madon.pl", "1"]
+        correct_mail = ["dorian@sraga.pl", "1"]
         correct_password = ["12345", "1"]
         if self.Entry_Mail.get() in correct_mail and self.Entry_Password.get() in correct_password:
             print("Debug: Zalogowano")
@@ -190,5 +190,5 @@ class Bank_Login(ctk.CTkFrame):
         self.Bank_Text.configure(text_color=glb.color_text)
 
     def change_mode_light(self):
-        self.backgroundFrame.configure(fg_color=glb.color_background2)
+        self.backgroundFrame.configure(fg_color=glb.color_background)
         self.Bank_Text.configure(text_color=glb.color_text)

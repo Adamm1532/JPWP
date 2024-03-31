@@ -2,6 +2,7 @@ import customtkinter as ctk
 import Bank_Login as bl
 import Bank_Ustawienia as bu
 import Glowna as gl
+import Profil as pr
 
 class Launch(ctk.CTk):
     def __init__(self, *args, **kwargs):
@@ -16,7 +17,7 @@ class Launch(ctk.CTk):
         container.grid_columnconfigure(0, weight=1)
 
         self.frames = {}
-        for F in (bl.Bank_Login, bu.Ustawienia, gl.Glowna):
+        for F in (bl.Bank_Login, bu.Ustawienia, gl.Glowna, pr.Profil):
             page_name = F.__name__
             frame = F(parent=container, controller=self)
             self.frames[page_name] = frame
