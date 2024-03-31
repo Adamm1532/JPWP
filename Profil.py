@@ -138,15 +138,21 @@ class Profil(ctk.CTk):
             new_info = new_entry.get()
             if new_info:
                 glb.Dane[idx-2] = new_info  # Update global data
-                label.configure(text=f"{['Nazwisko', 'Imię', 'Telefon', 'Adres'][idx-2]}: {new_info}")
-                new_entry.destroy()  # Remove the entry widget after updating the label
-                self.entry_opened = False  # Reset flag to False
+            else:
+                new_info = glb.Dane[idx-2]
+            
+            new_label_text = f"{['Nazwisko', 'Imię', 'Telefon', 'Adres'][idx-2]}: {new_info}"
+            label.configure(text=new_label_text)
+            new_entry.destroy()  # Remove the entry widget after updating the label
+            self.entry_opened = False  # Reset flag to False
 
-                # Enable all change buttons
-                for btn in self.change_buttons:
-                    btn.configure(state="normal")
-                # Disable the confirm button
+            # Enable all change buttons
+            for btn in self.change_buttons:
+                btn.configure(state="normal")
+            # Remove the confirm button
             confirm_button.grid_remove()
+
+
         # Function to handle Enter key press
         def handle_enter(event):
             update_label()
