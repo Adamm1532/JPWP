@@ -29,7 +29,7 @@ class Profil(ctk.CTk):
         
         # Empty label
         self.Empty_Label = ctk.CTkLabel(self.background_frame,
-                                         height=100, width=250,
+                                         height=350, width=250,
                                          corner_radius=10,
                                          text="",
                                          font=("Arial", 20, "bold"),
@@ -44,25 +44,10 @@ class Profil(ctk.CTk):
                                          font=("Arial", 20, "bold"),
                                          text_color=glb.color_text, 
                                          fg_color="transparent")
-        self.Empty_Label2.grid(row=1, column=0, columnspan=2, sticky="nsew")
+        self.Empty_Label2.grid(row=6, column=0, columnspan=2, sticky="nsew")
 
         # Profile picture
-        self.profile_img = ctk.CTkImage(dark_image=pil.Image.open("uzytkownik.png"), size=(200, 200))
-        self.Profile_Button = ctk.CTkButton(self.background_frame, image=self.profile_img, text="",
-                                             width=200, height=200,
-                                             fg_color=glb.color_background,
-                                             command=self.my_upload,
-                                             hover_color=glb.color_background,
-                                             corner_radius=100)
-        self.Profile_Button.place(relx=0.35,rely=0.35, anchor="center")
 
-        # Back button
-        self.Back_img = ctk.CTkImage(dark_image=glb.back_button, size=(30, 30))
-        self.Back_Button = ctk.CTkButton(self.background_frame, image=self.Back_img, text="",
-                                         width=50, height=50,
-                                         fg_color=glb.color_background,
-                                         hover_color=glb.color_background)
-        self.Back_Button.place(relx=0.07, rely=0.05, anchor="center")
 
         self.Pen_img = ctk.CTkImage(dark_image=glb.Pen, size=(30, 30))
         self.entry_opened = False  # Flag to track if entry is already opened
@@ -90,6 +75,23 @@ class Profil(ctk.CTk):
             button.grid(row=idx, column=1, sticky="nsew", padx=100, pady=10)
             self.change_buttons.append(button)
 
+
+        self.profile_img = ctk.CTkImage(dark_image=pil.Image.open("uzytkownik.png"), size=(200, 200))
+        self.Profile_Button = ctk.CTkButton(self.background_frame, image=self.profile_img, text="",
+                                             width=200, height=200,
+                                             fg_color=glb.color_background,
+                                             command=self.my_upload,
+                                             hover_color=glb.color_background,
+                                             corner_radius=100)
+        self.Profile_Button.place(relx=0.35,rely=0.25, anchor="center")
+
+        # Back button
+        self.Back_img = ctk.CTkImage(dark_image=glb.back_button, size=(30, 30))
+        self.Back_Button = ctk.CTkButton(self.background_frame, image=self.Back_img, text="",
+                                         width=50, height=50,
+                                         fg_color=glb.color_background,
+                                         hover_color=glb.color_background)
+        self.Back_Button.place(relx=0.07, rely=0.05, anchor="center")
 
     def my_upload(self):
         global filename
