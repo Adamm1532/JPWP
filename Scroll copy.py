@@ -10,20 +10,13 @@ from datetime import datetime
 
 
 
-class Glowna(ctk.CTk):
+class Scroll(ctk.CTk):
     def __init__(self):
         super().__init__()
         self.title("Bank Login")
         self.geometry("420x740+700+20")
         self.ostatni_click = "nic"
-        self.color_yellow = "#E6D525"
-        self.color_magenta = "#E62569"
-        self.color_blue = "#25C0E6"
-        self.color_backgroundLight = "#f4edde"
-        self.color_backgroundDark = "#565656"
-        self.Settings_size = 30
-        self.Settings_y = 0.05
-        self.Settings_x = 0.9
+
         self.background_frame = ctk.CTkFrame(self,
                                              fg_color=glb.color_background,
                                              border_color=glb.color_background,
@@ -42,8 +35,7 @@ class Glowna(ctk.CTk):
         self.Saldo_Label.place(relx=0.5, rely=0.22, anchor="center")
 
 
-        #self.my_frame = Historia(master=self, width=300, height=200,fg_color= "transparent")
-        #self.my_frame.place(relx=0.1, rely=0.7, anchor="w")
+
         self.historia_scrol=ctk.CTkScrollableFrame(master=self, 
                                                    bg_color=glb.color_background,
                                                    border_color=glb.color_magenta,
@@ -71,7 +63,8 @@ class Glowna(ctk.CTk):
         
         self.arrow1_img = ctk.CTkImage(dark_image=glb.arrow1, size=(30, 30))
         self.arrow2_img = ctk.CTkImage(dark_image=glb.arrow2, size=(30, 30))
-
+        # fragmenty kodu do skopiowania
+        # self.historia_scrol, text= glb.historia1[x], fg_color=glb.color_background2
 
         for x in range(0,len(glb.historia1),2):
             
@@ -96,24 +89,6 @@ class Glowna(ctk.CTk):
             #label_czas.grid(row=x+1, column=1, padx=(10, 5), pady=10, sticky=ctk.W,)
             self.labels.append(label_czas)
 
-
-        self.Settings_img = ctk.CTkImage(dark_image=glb.settings_button, size=(self.Settings_size, self.Settings_size))
-        self.Settings_Button = ctk.CTkButton(self.background_frame, image=self.Settings_img, text="",
-                                         width=50, height=50,
-                                         fg_color=glb.color_background,
-                                         
-                                         command=self.zwieksz_settings,
-                                         hover_color=glb.color_background)
-        self.Settings_Button.place(relx=self.Settings_x, rely=self.Settings_y, anchor="center")   
-        self.Profile_img = ctk.CTkImage(dark_image=glb.Profile_button, size=(30, 30))
-        self.Profile_Button = ctk.CTkButton(self.background_frame, image=self.Profile_img, text="",
-                                         width=50, height=50,
-                                         fg_color=glb.color_background,
-                                         
-                                         #command=self.zwieksz_profile,
-                                         hover_color=glb.color_background)
-        self.Profile_Button.place(relx=0.1, rely=self.Settings_y, anchor="center") 
-
     def expand(self,x):
         
 
@@ -134,20 +109,6 @@ class Glowna(ctk.CTk):
         else:
             self.ostatni_click = "nic"
 
-    def zwieksz_settings(self):
-    #    while self.Settings_y != 0.5 and self.Settings_x != 0.5:
-    #        self.Settings_y += 0.05
-    #        self.Settings_x -= 0.05
-    #        self.Settings_Button.place(relx=self.Settings_x,rely=self.Settings_y)
-    #        time.sleep(0.1) 
-
-        while self.Settings_size <= 2000:
-            self.Settings_size *= 1.1
-            
-            self.Settings_img = ctk.CTkImage(dark_image=glb.settings_button, size=(self.Settings_size, self.Settings_size))
-            self.Settings_Button.configure(image=self.Settings_img)
-            self.update_idletasks()  # Aktualizuj interfejs użytkownika
-            time.sleep(0.001) 
    
 
                 
@@ -155,10 +116,9 @@ class Glowna(ctk.CTk):
     def destruction(self):
         self.destroy()
         
-    def Settings_open(self):
-        self.destroy
+
         
 
 
-Glowna().mainloop()
+Scroll().mainloop()
 #import Bank_Ustawienia
