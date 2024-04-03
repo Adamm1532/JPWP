@@ -21,7 +21,7 @@
 
 # Uzupelnij fragmenty kodu z pliku Scroll.py zaczynając od linijki 66 gdzie są napisane fragmenty kodu które należy umieścić w miejscach 
 # w których wskazuje na to komentarz (#kod)
-# Jako wskazuwek użyj kodu który jest na swoim miejscu
+# Jako wskazówek użyj kodu który jest na swoim miejscu
 
 
 
