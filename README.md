@@ -1,8 +1,28 @@
 # JPWP
 
+# Zadanie:
+# W pliku Label.py dopisz fragmenty kodu tak aby:
+# Pojawił się label z napisem "Podaj adres e-mail:"
+# Pod nim pojawił się elemnt ctkentry z placeholder tekstem "np. cos@tam.pl "
+
+# użyj : ctk.CTkLabel oraz ctk.CTkEntry
+
+
+
+# pomocne metody:
+
+# ctk.CTkLabel(self.backgroundFrame, inne parametry)
+# ctk.CTkEntry(self.backgroundFrame, inne parametry)
+# .place(relx=,rely=,anchor="center")
+# dokumnetacja https://github.com/TomSchimansky/CustomTkinter/wiki/CTkLabel
+# https://github.com/TomSchimansky/CustomTkinter/wiki/CTkEntry
+
+
+
+
 
 # Zadanie:
-# W pliku obraz.py dopisz fragmenty kodu tak aby:
+# W pliku obraz.py napisz metodę My_Upload tak aby:
 # Wyświetlał się obraz urzytkownik.py(co jest już zrobione)
 # Po kliknięciu w obraz wyświetlało się okno do uploadowania obrazu z komputera uzytkownika
 # Obraz zostal obcięty do kształtu koła
